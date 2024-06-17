@@ -1,0 +1,120 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.login-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.message.error {
+  color: red;
+  font-size: 0.9em;
+}
+
+.forgot-link {
+  margin: 10px 0;
+}
+
+.forgot-link a {
+  color: black;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.forgot-link a:hover {
+  text-decoration: underline;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-primary:disabled {
+  background-color: #a5c8ff;
+  cursor: not-allowed;
+}
+
+.or-separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: #007bff;
+  font-size: 1.1em;
+}
+
+.or-separator::before,
+.or-separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 2px solid #007bff;;
+}
+
+.or-separator::before {
+  margin-right: .25em;
+}
+
+.or-separator::after {
+  margin-left: .25em;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-login .social-btn {
+  width: 100%;
+}
+
+.sign-up-link {
+  margin-top: 20px;
+}
+
+.sign-up-link span {
+  margin-right: 5px;
+}
+
+.sign-up-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.sign-up-link a:hover {
+  text-decoration: underline;
+}

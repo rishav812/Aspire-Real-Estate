@@ -1,0 +1,39 @@
+.navbar{
+    /* gap: 100px; */
+    list-style: none;
+    background-color: rgb(195 192 237);
+    width: 100%;
+    padding: 0.7rem 2rem;
+    /* position: fixed; */
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+    padding: 0.3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a:hover {
+    background-color: white;
+    color: rgb(80, 76, 135);
+    padding: 0.3rem;
+    font-size: 1.3rem;
+    border-radius: 10%;
+}
+
+.header {
+    display: flex;
+  }
+  
+  .header a {
+    padding: 8px;
+    text-decoration: none;
+    color: #000;
+  }
+  
+  
+  .header a.active-item {
+    border-bottom: 2px solid blue;
+  }

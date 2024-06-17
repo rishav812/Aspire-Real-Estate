@@ -1,0 +1,6 @@
+.input-label {
+    position: absolute;
+    top: -1.5rem; /* Adjust this value to position the label correctly */
+    right: 0;
+    font-weight: bold;
+  }
