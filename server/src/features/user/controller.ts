@@ -87,14 +87,14 @@ import { AuthServices } from "./services";
 //     }
 //   };
 
-//   export const updateUserApi = async (req: Request, res: Response) => {
-//     try {
-//       const response = await AuthServices.updateUserData(req.body,req.body.selectdb);
-//       res.status(200).json(response);
-//     } catch (error: any) {
-//       res.status(500).json({ message: error.message });
-//     }
-//   };
+  export const updateUserApi = async (req: Request, res: Response) => {
+    try {
+      const response = await AuthServices.updateUserData(req.body);
+      res.status(200).json(response);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  };
 
 //   export const deleteWishlist = async (req: Request, res: Response) => {
 //     try {

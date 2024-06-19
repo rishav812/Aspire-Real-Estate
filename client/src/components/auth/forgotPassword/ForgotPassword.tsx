@@ -33,7 +33,7 @@ function ForgotPassword() {
       const resp = await forgotPasswordService(data);
       console.log("resp=>", resp);
       if (resp.success) {
-        toastMessageSuccess(resp?.message);
+        toastMessageSuccess(resp.message);
         reset({});
         navigate("/otp-verification", {
           state: {
@@ -46,6 +46,7 @@ function ForgotPassword() {
       }
     } catch (error: any) {
       console.log("error==>", error);
+      toastMessageError("something went wrong");
     }
     setLoading(false);
   };

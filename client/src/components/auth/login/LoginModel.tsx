@@ -40,8 +40,8 @@ const LoginModel = () => {
       if (res.status) {
         localStorage.setItem("login", newRes.token);
         const { user_id, image, name, email, phone } = newRes;
-        dispatch(signInAction({ user_id, image, name, email, phone }));
         toastMessageSuccess(res.message);
+        dispatch(signInAction({ user_id, image, name, email, phone }));
         navigate("/user-dashboard");
       } else {
         toastMessageError(res.message);
@@ -138,11 +138,11 @@ const LoginModel = () => {
           </div>
           <div className="sign-up-link">
             <span>Don’t have an account?</span>
-            <Link to="/sign-up">Sign Up Now</Link>
+            <Link to="/signup">Sign Up Now</Link>
           </div>
         </form>
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </div>
   );
 };

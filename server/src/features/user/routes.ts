@@ -16,10 +16,11 @@ import { getAllCountry } from "./controller";
 //   deleteWishlist,
 //   updateUserApi,
 // } from "./controller";
+import {updateUserApi} from "./controller"
 
 const userRouter = Router();
 
-userRouter.post("/select-db", verifyUserToken);
+// userRouter.post("/select-db", verifyUserToken);
 
 // userRouter.use(DbType);
 
@@ -27,7 +28,7 @@ userRouter.post("/select-db", verifyUserToken);
 // userRouter.get("/fetch-all-category", verifyUserToken, getAllCategory);
 // userRouter.get("/fetch-product-by-category/:id", verifyUserToken, getProductByCategory);
 // userRouter.post("/add-to-cart", verifyUserToken,  addToCartApi);
-// userRouter.post("/update-user-data",verifyUserToken,updateUserApi);
+userRouter.post("/update-user-data",verifyUserToken,updateUserApi);
 // userRouter.get("/get-cart-data", verifyUserToken, getCartData);
 // userRouter.post("/add-to-wishlist", verifyUserToken, addToFavApi);
 // userRouter.delete("/delete-cart-data/:id", verifyUserToken, deleteCartData);

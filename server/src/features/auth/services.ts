@@ -208,7 +208,6 @@ export class AuthServices {
         const encryptedOtp = enc.Base64.stringify(
           CryptoJS.HmacSHA256(otp.toString(), process.env.crypto_key as string)
         );
-        console.log("encryptedOtp", encryptedOtp);
         return {
           success: true,
           message: "An otp has been sent on your email.",

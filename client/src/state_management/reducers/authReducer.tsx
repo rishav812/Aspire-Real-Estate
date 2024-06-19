@@ -1,5 +1,5 @@
 import ActionTypes from "../../resources/enums";
-import { UserAuthData } from "../../interfaces/commonInterface";
+import { UserAuthData, UserUserData } from "../../interfaces/commonInterface";
 
 export interface IRootState {
   isLoggedIn: boolean;
@@ -20,24 +20,35 @@ interface UpdateAction {
   type: ActionTypes.LOGOUT;
 }
 
-export type Action = LoginAction | UpdateAction;
+interface UpdateProfileAction {
+  type:ActionTypes.UPDATE_PROFILE,
+  payload:UserUserData
+}
+
+export type Action = LoginAction | UpdateAction | UpdateProfileAction;
 
 const AuthReducer = (state = initialState, action?: Action) => {
-  switch (action?.type){
-    case ActionTypes.LOGIN: 
+  switch (action?.type) {
+    case ActionTypes.LOGIN:
       return {
         ...state,
         isLoggedIn: true,
         authData: { ...state.authData, ...action?.payload },
       };
-    
+
+    case ActionTypes.UPDATE_PROFILE:
+      return {
+        ...state,
+        authData: { ...state.authData, ...action?.payload },
+      };
+
     case ActionTypes.LOGOUT:
       return {
         ...state,
         isLoggedIn: false,
         authData: {},
       };
-  
+
     default:
       return state;
   }

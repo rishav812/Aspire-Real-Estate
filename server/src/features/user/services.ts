@@ -3,13 +3,16 @@
 // import { mysqlConnection } from "../../db/sqldb_Connection";
 // import { OkPacket, RowDataPacket } from "mysql2";
 // import { v4 as uuidv4 } from "uuid";
-// import User from "../auth/model/user";
+import User from "../auth/model/user";
+import bcrypt from "bcrypt";
 // import Order_details from "./models/orderDetails";
 // import Cart from "./models/cart";
 // import Favorite from "./models/favorite";
 // import mongoose from "mongoose";
 // import Wishlist from "./models/favorite";
 // import { ICart, IUpdateUserDetail } from "./interface";
+import mongoose from "mongoose";
+import { IUpdateUserDetail } from "./interface";
 import { Country, ICountry } from "./models/country";
 
 // export const stripe = require("stripe")(process.env.key);
@@ -697,24 +700,60 @@ export class AuthServices {
   //   }
   // };
 
-  // static updateUserData = async (body: IUpdateUserDetail, prev_db: string) => {
-  //   const { user_id, image, name, email, phone } = body;
-  //   try {
-  //     if (prev_db === "mongodb") {
-  //       const new_id = new mongoose.Types.ObjectId(user_id);
-  //       const update = { image: image, name: name, email: email, phone: phone };
-  //       const resp = await User.findOneAndUpdate(
-  //         { _id: new_id },
-  //         { $set: update }
-  //       );
-  //     }
-  //   } catch (error: any) {
-  //     return {
-  //       status: 500,
-  //       message: error.message,
-  //     };
-  //   }
-  // };
+  static updateUserData = async (body: IUpdateUserDetail) => {
+    const { image, name, oldPassword, email, password, phone } = body;
+    try {
+      let updateQuery;
+      if (oldPassword && password) {
+        const user = await User.findOne({ email: email });
+        if (user) {
+          const isMatch = await bcrypt.compare(oldPassword, user.password);
+          if (!isMatch) {
+            return {
+              success: false,
+              message: "Please enter your correct old password",
+            };
+          } else {
+            const salt = await bcrypt.genSalt(10);
+            const hashPassword = await bcrypt.hash(password, salt);
+            updateQuery = {
+              image: image,
+              name: name,
+              password: hashPassword,
+              phone: phone,
+              updated_ts: new Date().getTime(),
+            };
+          }
+        }
+      } else {
+        updateQuery = {
+          image: image,
+          name: name,
+          phone: phone,
+          updated_ts: new Date().getTime(),
+        };
+      }
+      const resp = await User.findOneAndUpdate(
+        { email: email },
+        { $set: updateQuery },
+        { new: true }
+      );
+      // console.log("resp======", resp);
+      if (resp) {
+        return {
+          success: true,
+          message: "Profile updated successfully",
+          data: resp,
+        };
+      }
+    } catch (error: any) {
+      return {
+        status: 500,
+        message: error.message,
+      };
+    }
+  };
+
   static getCountriesService = async () => {
     const result: ICountry[] = await Country.find({});
     const data: any = [];
