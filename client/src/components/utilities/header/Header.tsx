@@ -38,7 +38,7 @@ function Header() {
           ) : isLoggedIn ? (
             <>
               <NavLink to="/user-dashboard" className="active-item">Home</NavLink>
-              <NavLink to="/user-cart" className="active-item">Cart</NavLink>
+              <NavLink to="/add-listing" className="active-item">Listing</NavLink>
               <NavLink to="/user-wishlist" className="active-item">Wishlist</NavLink>
               <NavLink to="/user-profile" className="active-item">Profile</NavLink>
               <NavLink to="/" onClick={handleLogout}>Logout</NavLink> 

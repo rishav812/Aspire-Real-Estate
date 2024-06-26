@@ -21,6 +21,7 @@ export const endpoints={
        GET_PAYMENT_DETAILS:"/admin/get-payment-details"
    },
     user:{
+      CREATE_LISTING:"/user/create-listing",
       GET_ALL_COUNTRIES:"/user/get-countries",
       FETCH_PUBLISHED_PRODUCT:"/user/fetch-published-product",
       GET_CATEGORY:"/user/fetch-all-category",

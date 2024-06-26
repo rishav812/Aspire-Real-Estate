@@ -55,6 +55,14 @@ export const resetPasswordService = async (data: any) => {
   return res.data;
 };
 
+export const createListing = async (data: any): Promise<any> => {
+  const res = await http.post(
+    `${baseURL}${endpoints.user.CREATE_LISTING}`,
+    data
+  );
+  return res.data;
+};
+
 export const getAllProductService = async (skip: number): Promise<any> => {
   const res = await http.get(
     `${baseURL}${endpoints.user.FETCH_PUBLISHED_PRODUCT}?skip=${skip}`

@@ -2,7 +2,7 @@ import { Router } from "express";
 import { DbType } from "../../middleware/Db_Select";
 import { dbType_Select } from "../admin/controller";
 import { verifyUserToken } from "../../middleware/verifyUser";
-import { getAllCountry } from "./controller";
+import { createListingApi, getAllCountry } from "./controller";
 // import {
 //   getAllCategory,
 //   getProductByCategory,
@@ -28,6 +28,7 @@ const userRouter = Router();
 // userRouter.get("/fetch-all-category", verifyUserToken, getAllCategory);
 // userRouter.get("/fetch-product-by-category/:id", verifyUserToken, getProductByCategory);
 // userRouter.post("/add-to-cart", verifyUserToken,  addToCartApi);
+userRouter.post("/create-listing",verifyUserToken,createListingApi);
 userRouter.post("/update-user-data",verifyUserToken,updateUserApi);
 // userRouter.get("/get-cart-data", verifyUserToken, getCartData);
 // userRouter.post("/add-to-wishlist", verifyUserToken, addToFavApi);

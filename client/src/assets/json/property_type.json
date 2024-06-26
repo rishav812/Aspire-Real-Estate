@@ -1,0 +1,23 @@
+[
+  {
+    "label": "Sell",
+    "value": "Sell"
+  },
+  {
+    "label": "Rent",
+    "value": "Rent"
+  },
+  {
+    "label": "Parking Spot",
+    "value": "Parking Spot"
+  },
+  {
+    "label": "Furnished",
+    "value": "Furnished"
+  },
+  {
+    "label": "Offer",
+    "value": "Offer"
+  }
+]
+

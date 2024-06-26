@@ -14,6 +14,8 @@ import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 import { IUpdateUserDetail } from "./interface";
 import { Country, ICountry } from "./models/country";
+import property_detailsModel from "./models/propertyDetails";
+import Listing from "./models/propertyDetails";
 
 // export const stripe = require("stripe")(process.env.key);
 
@@ -700,6 +702,49 @@ export class AuthServices {
   //   }
   // };
 
+  static CreateListingService = async (body: any) => {
+    try {
+      const {
+        userId,
+        name,
+        description,
+        address,
+        property_type,
+        property_status,
+        beds,
+        baths,
+        regular_price,
+        discounted_price,
+        images,
+      } = body;
+      const document = new Listing({
+        name,
+        description,
+        address,
+        property_type,
+        property_status,
+        beds,
+        baths,
+        regular_price,
+        discounted_price,
+        images,
+        userId,
+        createdAt: new Date().getTime(),
+        updatedAt: new Date().getTime(),
+      });
+      const resp = await document.save();
+      return {
+        success: true,
+        message: "Listing created successfully",
+      };
+    } catch (err: any) {
+      return {
+        success: false,
+        message: "Something went wrong",
+      };
+    }
+  };
+
   static updateUserData = async (body: IUpdateUserDetail) => {
     const { image, name, oldPassword, email, password, phone } = body;
     try {
@@ -738,7 +783,6 @@ export class AuthServices {
         { $set: updateQuery },
         { new: true }
       );
-      // console.log("resp======", resp);
       if (resp) {
         return {
           success: true,
