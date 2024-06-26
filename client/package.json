@@ -69,7 +69,7 @@
     "@types/react-facebook-login": "^4.1.11",
     "@types/redux-logger": "^3.0.9",
     "@types/redux-persist": "^4.3.1",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.4.5",
     "dotenv-webpack": "^8.0.1"
   }
 }
